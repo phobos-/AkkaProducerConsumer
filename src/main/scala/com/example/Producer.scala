@@ -2,7 +2,7 @@ package com.example
 
 import java.util.concurrent.atomic.AtomicInteger
 
-import akka.actor.{Actor, ActorRef}
+import akka.actor.{Actor, ActorRef, Props}
 
 import scala.util.Random
 
@@ -20,4 +20,9 @@ class Producer(pool: ActorRef, maxCount: Int, minDelayTimeMs: Int, maxDelayTimeM
       sender() ! "finished"
       context.stop(self)
   }
+}
+
+object Producer {
+  def props(pool: ActorRef, maxCount: Int, minDelayTimeMs: Int, maxDelayTimeMs: Int): Props =
+    Props(new Producer(pool, maxCount, minDelayTimeMs, maxDelayTimeMs))
 }

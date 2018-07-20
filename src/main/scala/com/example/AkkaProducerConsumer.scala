@@ -23,9 +23,9 @@ object AkkaProducerConsumer extends App {
 
   val system: ActorSystem = ActorSystem("akkaPK")
 
-  val consumerPaths = (1 to numConsumers).map(i => system.actorOf(Props(new Consumer), "consumer" + i).path.toString)
+  val consumerPaths = (1 to numConsumers).map(i => system.actorOf(Consumer.props, "consumer" + i).path.toString)
   val consumerPool = system.actorOf(Props.empty.withRouter(routingAlgorithm(consumerPaths)),"pool")
-  val producers = (1 to numProducers).map(i => system.actorOf(Props(new Producer(consumerPool, maxCount, minDelayTimeMs, maxDelayTimeMs)), "producer" + i))
+  val producers = (1 to numProducers).map(i => system.actorOf(Producer.props(consumerPool, maxCount, minDelayTimeMs, maxDelayTimeMs), "producer" + i))
 
   val results = producers.map(producer => ask(producer, "Start").mapTo[String])
   while (!results.forall(i => i.isCompleted)) Thread.sleep(maxDelayTimeMs / 10)
