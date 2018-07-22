@@ -1,5 +1,3 @@
-package com.example
-
 import java.util.concurrent.atomic.AtomicInteger
 
 import akka.actor.{ Actor, ActorRef, Props }

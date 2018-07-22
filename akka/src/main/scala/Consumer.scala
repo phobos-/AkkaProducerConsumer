@@ -1,5 +1,3 @@
-package com.example
-
 import akka.actor.{ Actor, ActorLogging, Props }
 
 class Consumer extends Actor with ActorLogging {
