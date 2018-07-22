@@ -17,7 +17,7 @@ class BrowserSpec
 
       go to ("http://localhost:" + port)
 
-      pageSource must include("Your new application is ready.")
+      pageSource must include("Hello world!")
     }
   }
 }

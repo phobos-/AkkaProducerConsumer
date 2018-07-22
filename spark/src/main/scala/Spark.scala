@@ -5,7 +5,6 @@ import org.apache.spark.sql.SparkSession
 import org.apache.log4j.Logger
 import org.apache.log4j.Level
 
-@SuppressWarnings(Array("org.wartremover.warts.NonUnitStatements", "org.wartremover.warts.ToString"))
 object Spark {
 
   System.setProperty("hadoop.home.dir", Paths.get(getClass.getResource("/bin").toURI).getParent.toString)
