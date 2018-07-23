@@ -41,6 +41,11 @@ lazy val spark = project.in(file("spark")).settings(
   )
 )
 
+lazy val problems = project.in(file("problems")).settings(
+  commonSettings,
+  libraryDependencies ++= commonDependencies
+)
+
 lazy val commonDependencies = Seq(
   dependencies.scalatest  % "test",
   dependencies.scalacheck % "test"
