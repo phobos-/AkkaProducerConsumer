@@ -1,6 +1,6 @@
-name := "producerConsumer"
+name := "ScalaFrameworks"
 
-version := "1.0"
+version := "1.0-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 crossScalaVersions := Seq("2.11.12", "2.12.6")
@@ -41,7 +41,7 @@ lazy val spark = project.in(file("spark")).settings(
   )
 )
 
-lazy val problems = project.in(file("problems")).settings(
+lazy val puzzles = project.in(file("puzzles")).settings(
   commonSettings,
   libraryDependencies ++= commonDependencies
 )
